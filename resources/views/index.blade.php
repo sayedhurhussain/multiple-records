@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container d-flex justify-content-center pt-5">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <h2 class="text-center pb-3 text-danger">Add or Remove Multiple Records</h2>
 
             <form action="/post" method="Post">
@@ -36,11 +36,19 @@
                 <table class="table table-bordered" id="table">
                     <tr>
                         <th>Name</th>
+                        <th>Email</th>
+                        <th>Marks</th>
                         <th>Action</th>
                     </tr>
                     <tr>
                         <td>
                             <input type="text" name="inputs[0][name]" id="name" placeholder="Enter your name" class="form-control">
+                        </td>
+                        <td>
+                            <input type="email" name="inputs[0][email]" id="email" placeholder="Enter your email" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" name="inputs[0][marks]" id="marks" placeholder="Enter your marks" class="form-control">
                         </td> 
                         <td>
                             <button type="button" name="add" id="add" class="btn btn-success">Add More</button>
@@ -62,7 +70,13 @@
             $('#table').append(
                 `<tr>
                     <td>
-                        <input type="text" name="input[`+i+`][name]" placeholder="Enter your name" class="form-control">
+                        <input type="text" name="inputs[`+i+`][name]" placeholder="Enter your name" class="form-control">
+                    </td>
+                    <td>
+                        <input type="email" name="inputs[`+i+`][email]" placeholder="Enter your email" class="form-control">
+                    </td>
+                    <td>
+                        <input type="number" name="inputs[`+i+`][marks]" placeholder="Enter your marks" class="form-control">
                     </td>
                     <td>
                         <button type="button" name="add" id="add" class="btn btn-danger remove-table-row">Remove</button>

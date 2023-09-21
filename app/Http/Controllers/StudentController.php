@@ -28,7 +28,22 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'inputs.*.name' => 'required',
+            'inputs.*.email' => 'required',
+            'inputs.*.marks' => 'required'
+        ],
+        [
+            'inputs.*.name' => 'The name field is required',
+            'inputs.*.email' => 'The email field is required',
+            'inputs.*.marks' => 'The marks field is required'
+        ]);
+
+        foreach($request->inputs as $key => $value) {
+            Student::create($value);
+        }
+
+        return back()->with('success', 'The post has been added!');
     }
 
     /**
